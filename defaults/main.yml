@@ -1,2 +1,3 @@
 ---
 # defaults file for ansible-role-icinga-book-plugins
+check_plugin: true

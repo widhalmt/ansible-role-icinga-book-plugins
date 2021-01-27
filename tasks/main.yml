@@ -1,2 +1,13 @@
 ---
 # tasks file for ansible-role-icinga-book-plugins
+
+- name: Include os specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_os_family | lower }}_{{ ansible_distribution_major_version }}.yml'
+    - '{{ ansible_os_family | lower }}.yml'
+
+- name: Include check_ping
+  package:
+    name: "{{ check_ping_plugin }}"
+  when: check_ping | bool
