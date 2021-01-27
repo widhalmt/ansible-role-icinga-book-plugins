@@ -3,5 +3,6 @@
   hosts: all
   tasks:
     - name: Enable EPEL on CentOS
-      package: epel-release
-      when: ansible_os_family | lower == "redhat"
+      package:
+        name: epel-release
+      when: ansible_os_family|lower == 'redhat'
