@@ -4,5 +4,15 @@
 - name: Verify
   hosts: all
   tasks:
+  - name: Set plugin_path CentOS
+    set_fact:
+      plugin_path: "/usr/lib64/nagios/plugins"
+    when: ansible_os_family|lower == 'redhat'
+
+  - name: Set plugin_path Debian
+    set_fact:
+      plugin_path: "/usr/lib/nagios/plugins"
+    when: ansible_os_family|lower == 'debian'
+
   - name: Run check_ping
     command: "{{ plugin_path }}/check_ping --help"
