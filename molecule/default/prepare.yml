@@ -1,0 +1,8 @@
+---
+- name: Prepare hosts
+  hosts: all
+  tasks:
+    - name: Enable EPEL on CentOS
+      package:
+        name: epel-release
+      when: ansible_os_family|lower == 'redhat'

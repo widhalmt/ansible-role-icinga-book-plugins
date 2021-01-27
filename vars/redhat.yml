@@ -1,0 +1,3 @@
+---
+plugin_path: /usr/lib64/nagios/pugins
+check_ping_plugin: nagios-plugins-ping
